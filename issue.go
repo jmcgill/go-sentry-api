@@ -28,6 +28,7 @@ type Status string
 type IssueStats struct {
 	TwentyFourHour *[]Stat `json:"24h,omitempty"`
 	ThirtyDays     *[]Stat `json:"30d,omitempty"`
+	FourteenDays   *[]Stat `json:"14d,omitempty"`
 }
 
 //IssueTagValue represents a tags value
