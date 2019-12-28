@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/atlassian/go-sentry-api/datatype"
+	"github.com/jmcgill/go-sentry-api/datatype"
 	"github.com/getsentry/raven-go"
 )
 
