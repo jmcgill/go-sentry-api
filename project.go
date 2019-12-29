@@ -45,6 +45,15 @@ type Project struct {
 	DigestMaxDelay     *int                    `json:"digestMaxDelay,omitempty"`
 }
 
+type ProjectTag struct {
+	Count     int       `json:"count"`
+	Name      string    `json:"name"`
+	Value     string    `json:"value"`
+	LastSeen  time.Time `json:"lastSeen"`
+	Key       string    `json:"key"`
+	FirstSeen time.Time `json:"firstSeen"`
+}
+
 // CreateProject will create a new project in your org and team
 func (c *Client) CreateProject(o Organization, t Team, name string, slug *string) (Project, error) {
 	var proj Project
@@ -75,6 +84,13 @@ func (c *Client) GetProjects() ([]Project, error) {
 	var proj []Project
 	err := c.do("GET", "projects", &proj, nil)
 	return proj, err
+}
+
+// GetTagValues fetchs all values for a tag for a given project
+func (c *Client) GetProjectTagValues(o Organization, p Project, tag string) ([]ProjectTag, error) {
+	var tags []ProjectTag
+	err := c.do("GET", fmt.Sprintf("projects/%s/%s/tags/%s/values", o.Slug, p.Slug, tag), &tags, nil)
+	return tags, err
 }
 
 // DeleteProject will take your org, team, and proj and delete it from sentry.
