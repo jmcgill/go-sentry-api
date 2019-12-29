@@ -87,10 +87,10 @@ func (c *Client) GetProjects() ([]Project, error) {
 }
 
 // GetTagValues fetchs all values for a tag for a given project
-func (c *Client) GetProjectTagValues(o Organization, p Project, tag string) ([]ProjectTag, error) {
+func (c *Client) GetProjectTagValues(o Organization, p Project, tag string) ([]ProjectTag, *Link, error) {
 	var tags []ProjectTag
-	err := c.do("GET", fmt.Sprintf("projects/%s/%s/tags/%s/values", o.Slug, p.Slug, tag), &tags, nil)
-	return tags, err
+	link, err := c.doWithPagination("GET", fmt.Sprintf("projects/%s/%s/tags/%s/values", o.Slug, p.Slug, tag), &tags, nil)
+	return tags, link, err
 }
 
 // DeleteProject will take your org, team, and proj and delete it from sentry.
