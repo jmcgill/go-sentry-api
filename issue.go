@@ -105,7 +105,7 @@ type Issue struct {
 	Stats               *IssueStats        `json:"stats,omitempty"`
 	Status              *Status            `json:"status,omitempty"`
 	StatusDetails       *map[string]string `json:"statusDetails,omitempty"`
-	SubscriptionDetails *map[string]string `json:"subscriptionDetails,omitempty"`
+// 	SubscriptionDetails *map[string]string `json:"subscriptionDetails,omitempty"`
 	Tags                *[]IssueTag        `json:"tags,omitempty"`
 	Title               *string            `json:"title,omitempty"`
 	Type                *string            `json:"type,omitempty"`
